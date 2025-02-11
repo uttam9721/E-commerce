@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import productList from './data'
 import { useNavigate } from 'react-router-dom'
-const Navbar = ({setData}) => {
+const Navbar = ({setData,cart}) => {
   const navigate = useNavigate();
   const [searchTerm,setSearchTerm] = useState("");
 
@@ -47,7 +47,15 @@ const Navbar = ({setData}) => {
             placeholder='Search item here' />
             </form>
         </div>
-        <Link to={'/cart'} className="cart">Cart</Link>
+        <Link to={'/cart'} className="cart">
+        <button type="button" class="btn btn-primary position-relative">
+  Cart
+  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    {cart.length}
+    <span class="visually-hidden">unread messages</span>
+  </span>
+</button>
+        </Link>
     </div>
       
     </>

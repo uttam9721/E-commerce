@@ -29,6 +29,7 @@ const ProductDetail = () => {
               <h2 className="product-model">{product.model}</h2>
               <h3 className="product-price">₹ {product.price}</h3>
               <p className="product-space">{product.space}</p>
+              <p className="product-space">{product.description}</p>
               <button className="add-to-cart">AddToCart</button>
             </div>
             {/* </Link> */}

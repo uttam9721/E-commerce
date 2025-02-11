@@ -5,6 +5,7 @@ const Home = ({productList}) => {
   return (
     <>
       <h1 className="home-title">Products</h1>
+      {/* <h1 className="home-title">Products</h1> */}
       
       <div className="product-list">
         {productList.map((product) => (

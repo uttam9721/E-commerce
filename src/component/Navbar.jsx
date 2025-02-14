@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import productList from './data'
 import { useNavigate } from 'react-router-dom'
+import { IoIosCart } from "react-icons/io";
 const Navbar = ({setData,cart}) => {
+  const location = useLocation()
   const navigate = useNavigate();
   const [searchTerm,setSearchTerm] = useState("");
 
@@ -24,21 +26,26 @@ const Navbar = ({setData,cart}) => {
 
   return (
     <>
-    <div className='style'>
+    <div className='style' style={{position:'sticky'}}>
         <Link to='/' className="home">Home</Link>
         <div className="about">About</div>
-        <div className="contact">
-        <select onChange={(e) => filterByType(e.target.value)}>
-            <option value="All">All Products</option>
-            <option value="Mobile">Mobile</option>
-            <option value="Laptop">Laptop</option>
-            <option value="bluetooth , airdopes">bluetooth , airdopes</option>
-            <option value="Jeans">Jeans</option>
-            <option value="Shoes">Shoes</option>
-            <option value="Tshirts">Tshirts</option>
-            <option value="Hoody">Hoody</option>
-          </select>
-        </div>
+        {
+          location.pathname=='/' && (
+            <div className="contact">
+            <select onChange={(e) => filterByType(e.target.value)}>
+                <option value="All">All Products</option>
+                <option value="Mobile">Mobile</option>
+                <option value="Laptop">Laptop</option>
+                <option value="bluetooth , airdopes">bluetooth , airdopes</option>
+                <option value="Jeans">Jeans</option>
+                <option value="Shoes">Shoes</option>
+                <option value="Tshirts">Tshirts</option>
+                <option value="Hoody">Hoody</option>
+              </select>
+            </div>
+          )
+        }
+       
         <div className="search">
           <form onSubmit={handleSubmit}>
             <input type="search"
@@ -49,7 +56,7 @@ const Navbar = ({setData,cart}) => {
         </div>
         <Link to={'/cart'} className="cart">
         <button type="button" class="btn btn-primary position-relative">
-  Cart
+        <IoIosCart style={{fontSize:'1.5rem'}} />
   <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
     {cart.length}
     <span class="visually-hidden">unread messages</span>

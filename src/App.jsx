@@ -7,6 +7,7 @@ import Cart from './component/Cart';
 import Home from './component/Home';
 // import productList from './data';
 import productList from './component/data';
+import Checkout from './component/Checkout';
 const App = () => {
   const [data,setData]=useState(...[productList])
   const [cart,setCart] = useState([])
@@ -16,10 +17,12 @@ const App = () => {
       <Router>
         <Navbar cart={cart} setData={setData}/>
         <Routes>
+          
           <Route path='/' element={<Home productList={data} cart={cart} setCart={setCart}/>} />
-          <Route path='/product/:id' element={<ProductDetail/>} />
-          <Route path='/search/:term' element={<Search/>} />
-          <Route path='/cart' element={<Cart />} />
+          <Route path='/product/:id' element={<ProductDetail  cart={cart} setCart={setCart}/>} />
+          <Route path='/search/:term' element={<Search  cart={cart} setCart={setCart} />} />
+          <Route path='/cart' element={<Cart cart={cart} setCart={setCart}/>} />
+          <Route path='/checkout' element={<Checkout />} />
 
           
         </Routes>

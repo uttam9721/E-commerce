@@ -8,7 +8,6 @@ const Home = ({ productList, cart, setCart }) => {
     const obj = { id, price, model, description, img };
 
     setCart([...cart, obj]); // Add item to cart
-
     // Show Toast Notification
     toast.success(`${model} added to cart!`, {
       position: "top-right",
@@ -18,6 +17,7 @@ const Home = ({ productList, cart, setCart }) => {
       pauseOnHover: true,
       draggable: true,
       theme: "light",
+      // theme: "light",
     });
 
     console.log("Cart:", cart);
